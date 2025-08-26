@@ -30,6 +30,9 @@ jobs:
           issue-number: ${{ steps.pr_num_reader.outputs.content }}
           body: |
             Continuous integration check(s) failed. Please review the [failing check\'s logs](${{ github.event.workflow_run.html_url }}) and make the necessary changes.
+            - Important: Do not close this PR and open a new one. Push your fixes to the same branch; the existing PR will update and CI will re-run automatically.
+            - To re-run without new commits (e.g., transient failures), open the Checks tab on this PR and use “Re-run jobs”/“Re-run all jobs”.
+            - Keeping the same PR preserves review history, labels, and automation, and avoids extra notifications for maintainers.
 
       - name: Apply label changes
         uses: PauMAVA/add-remove-label-action@v1.0.3
